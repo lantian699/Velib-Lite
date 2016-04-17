@@ -44,7 +44,7 @@ import com.ciel.bleu.services.DecodeStationInfoFromInternet;;
 public class VelibStationMapActivity extends FragmentActivity implements OnInfoWindowClickListener{
 
 	
-	protected static final float MAX_ZOOM_LEVEL = 12.0f;
+	protected static final float MAX_ZOOM_LEVEL = 14.0f;
 	protected static final float MY_LOCATION_ZOOM_LEVEL = 14.0f;
 	private GoogleMap mMap;
 	private UiSettings mUiSetting;

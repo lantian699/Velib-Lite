@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc2"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.ciel.equipe"
@@ -10,12 +10,48 @@ android {
         targetSdkVersion 16
     }
 
-    buildTypes {
+    signingConfigs {
+        debug {
+            storeFile file("keystore/debug.keystore")
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            storeFile file("keystore/release.keystore.jks")
+            storePassword "jetaimelafrance"
+            keyAlias "androidreleasekeystore"
+            keyPassword "jetaimelafrance"
         }
     }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            resValue "string", "google_maps_api_key", "AIzaSyDHIAn_QeqdYnSvh0wqL6yFAlUkfr1VMLM"
+        }
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            debuggable true
+            resValue "string", "google_maps_api_key", "AIzaSyDHIAn_QeqdYnSvh0wqL6yFAlUkfr1VMLM"
+        }
+
+
+        productFlavors {
+            developpement {
+                applicationId "com.ciel.equipe.developpement"
+            }
+            prod {
+                applicationId "com.ciel.equipe"
+            }
+
+        }
+    }
+
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -23,5 +59,4 @@ dependencies {
     compile 'com.google.android.gms:play-services:7.5.0'
     compile 'com.j256.ormlite:ormlite-core:4.48'
     compile 'com.j256.ormlite:ormlite-android:4.48'
-
 }
