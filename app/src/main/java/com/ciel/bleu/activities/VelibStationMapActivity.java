@@ -130,7 +130,7 @@ public class VelibStationMapActivity extends FragmentActivity implements OnInfoW
 		                
 		                markerClicked = false;
 		                
-		                if(position.zoom > MAX_ZOOM_LEVEL)
+		                if(position.zoom >= MAX_ZOOM_LEVEL)
 		                for(final StationVelib station : listStation){
 							
 							if( bounds.southwest.latitude<station.getLatitude()&& station.getLatitude() < bounds.northeast.latitude

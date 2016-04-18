@@ -31,7 +31,8 @@ android {
         release {
             minifyEnabled true
             signingConfig signingConfigs.release
-            debuggable true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             resValue "string", "google_maps_api_key", "AIzaSyDHIAn_QeqdYnSvh0wqL6yFAlUkfr1VMLM"
         }
 
